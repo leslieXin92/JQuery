@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>效果</title>
+		<script src="../jQuery.js"></script>
+	</head>
+
+	<style>
+		.box {
+			margin: 50px 100px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 400px;
+			cursor: pointer;
+			background-color: palegreen;
+		}
+		.boxButtons {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			width: 100%;
+			height: 50px;
+		}
+		button {
+			padding: 6px 15px;
+			font-size: 17px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		.boxMsg {
+			width: 100%;
+			height: 80px;
+			font-size: 22px;
+			text-align: center;
+			line-height: 80px;
+			cursor: default;
+			background-color: palevioletred;
+		}
+		.animateMsg {
+			position: relative;
+		}
+	</style>
+
+	<body>
+		<!-- 显示与隐藏 : show、hide -->
+		<div class="box">
+			<div class="boxButtons">
+				<button class="show">show</button>
+				<button class="hide">hide</button>
+				<button class="switch">switch</button>
+			</div>
+			<div class="boxMsg showAndHideMsg">Yahoo！！！</div>
+		</div>
+
+		<!-- 淡入淡出 : fadeIn、fadeOut、fadeToggle、fadeTo -->
+		<div class="box">
+			<div class="boxButtons">
+				<button class="fadeIn">fadeIn</button>
+				<button class="fadeOut">fadeOut</button>
+				<button class="fadeToggle">fadeToggle</button>
+				<button class="fadeTo">fadeTo</button>
+			</div>
+			<div class="boxMsg fadeMsg">Yahoo！！！</div>
+		</div>
+
+		<!-- 滑动 : slideUp、slideDown、slideToggle -->
+		<div class="box">
+			<div class="boxButtons">
+				<button class="slideUp">slideUp</button>
+				<button class="slideDown">slideDown</button>
+				<button class="slideToggle">slideToggle</button>
+			</div>
+			<div class="boxMsg slideMsg">Yahoo！！！</div>
+		</div>
+
+		<!-- 动画 : animate -->
+		<div class="box">
+			<div class="boxButtons">
+				<button class="animate">animate</button>
+			</div>
+			<div class="boxMsg animateMsg">Yahoo！！！</div>
+		</div>
+
+		<!-- 链接 : chaining -->
+		<div class="box">
+			<div class="boxButtons">
+				<button class="chaining">chaining</button>
+			</div>
+			<div class="boxMsg chainingMsg">Yahoo！！！</div>
+		</div>
+	</body>
+
+	<script>
+		// 显示隐藏
+		// $(selector).action(speed, callback)
+		$('.show').click(function () {
+			$('.showAndHideMsg').show()
+		})
+		$('.hide').click(function () {
+			$('.showAndHideMsg').hide()
+		})
+		$('.switch').click(function () {
+			$('.showAndHideMsg').toggle()
+		})
+
+		// 淡入淡出
+		// $(selector).action(speed, callback)
+		$('.fadeIn').click(function () {
+			$('.fadeMsg').fadeIn()
+		})
+		$('.fadeOut').click(function () {
+			$('.fadeMsg').fadeOut()
+		})
+		$('.fadeToggle').click(function () {
+			$('.fadeMsg').fadeToggle()
+		})
+		$('.fadeTo').click(function () {
+			$('.fadeMsg').fadeTo('slow', 0.3)
+		})
+
+		// 滑动
+		// $(selector).action(speed, callback)
+		$('.slideUp').click(function () {
+			$('.slideMsg').slideUp()
+		})
+		$('.slideDown').click(function () {
+			$('.slideMsg').slideDown()
+		})
+		$('.slideToggle').click(function () {
+			$('.slideMsg').slideToggle()
+		})
+
+		// 动画
+		// $(selector).action({ params, speed, callback })
+		$('.animate').click(function () {
+			$('.animateMsg').animate({
+				width: '500px',
+				height: 'toggle',
+				left: '200px',
+				opacity: '0.2'
+			})
+			$('.animateMsg').animate({
+				width: '400px',
+				left: '0',
+				opacity: '1'
+			})
+		})
+
+		// 链接
+		$('.chaining').click(function () {
+			$('.chainingMsg').css('color', 'red').slideUp().slideDown()
+		})
+	</script>
+</html>
