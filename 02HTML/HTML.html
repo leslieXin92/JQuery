@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title> HTML </title>
+	<script src="../jQuery.js"></script>
+</head>
+
+<style>
+	.box {
+		margin: 50px 100px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 500px;
+		border-radius: 15px;
+		cursor: pointer;
+		background-color: palegreen;
+	}
+
+	.boxButtons {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		height: 60px;
+	}
+
+	button {
+		padding: 6px 15px;
+		font-size: 17px;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+
+	.boxMsgs {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		height: 200px;
+		font-size: 22px;
+		text-align: center;
+		border-radius: 0 0 15px 15px;
+		cursor: default;
+		background-color: palevioletred;
+	}
+
+	input {
+		font-size: 22px;
+		text-indent: 1em;
+	}
+
+	.colorGreen {
+		color: greenyellow;
+	}
+
+	.fontSize40 {
+		font-size: 40px;
+	}
+
+	.sizeMsg {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60%;
+		height: 60%;
+		border: 2px solid greenyellow;
+	}
+</style>
+
+<body>
+	<!-- 获取内容和属性 -->
+	<div class="box">
+		<div class="boxButtons">
+			<button class="showTextBtn"> showText </button>
+			<button class="showHtmlBtn"> showHtml </button>
+			<button class="showValBtn"> showVal </button>
+			<button class="showAttrBtn"> showAttr </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="showTextMsg"> <i> htmlMsg </i> </div>
+			<div class="showHtmlMsg"> <b> htmlMsg </b> </div>
+			<input class="showValMsg" type="text" value="valMsg" />
+			<div>
+				<a class="showAttrMsg" href="http://www.baidu.com"> skip </a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 设置内容和属性 -->
+	<div class="box">
+		<div class="boxButtons">
+			<button class="changeTextBtn"> changeText </button>
+			<button class="changeHtmlBtn"> changeHtml </button>
+			<button class="changeValBtn"> changeVal </button>
+			<button class="changeAttrBtn"> changeAttr </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="changeTextMsg"> <i> default </i> </div>
+			<div class="changeHtmlMsg"> <b> default </b> </div>
+			<input class="changeValMsg" type="text" value="default">
+			<div>
+				<a class="changeAttrMsg" href="http://www.baidu.com"> skip </a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加元素 -->
+	<div class="box">
+		<div class="boxButtons">
+			<button class="appendBtn"> append </button>
+			<button class="prependBtn"> prepend </button>
+			<button class="afterBtn"> after </button>
+			<button class="beforeBtn"> before </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="addElementMsg"> yahoo </div>
+		</div>
+	</div>
+
+	<!-- 删除元素 -->
+	<div class="box">
+		<div class="boxButtons">
+			<button class="removeBtn"> remove </button>
+			<button class="emptyBtn"> empty </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="removeMsg">
+				<span class="removeSpan"> remove - span </span>
+				<div class="removeDiv"> remove - div </div>
+				<span class="removeSpan"> remove - span </span>
+			</div>
+			<div class="emptyMsg">
+				<span> empty - span </span>
+				<div> empty - div </div>
+				<span> empty - span </span>
+			</div>
+		</div>
+	</div>
+
+	<!-- css样式 -->
+	<div class="box">
+		<div class="boxButtons">
+			<button class="cssBtn"> css </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="cssMsg"> yahoo！！！ </div>
+		</div>
+	</div>
+
+	<!-- css类 -->
+	<div class="box">
+		<div class="boxButtons">
+			<button class="addClassBtn"> addClass </button>
+			<button class="removeClassBtn"> removeClass </button>
+			<button class="toggleClassBtn"> toggleClass </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="classMsg"> yahoo！！！ </div>
+		</div>
+	</div>
+
+	<!-- 尺寸 -->
+	<div class="box">
+		<div class="boxButtons sizeBoxButtons">
+			<button class="sizeInfoBtn"> sizeInfo </button>
+			<button class="changeSize"> changeSize </button>
+		</div>
+		<div class="boxMsgs">
+			<div class="sizeMsg"> yahoo！！！ </div>
+		</div>
+	</div>
+</body>
+
+<script>
+	// 获取内容和属性
+	$('.showTextBtn').click(function () {
+		alert('text：' + $('.showTextMsg').text())
+	})
+	$('.showHtmlBtn').click(function () {
+		alert('html：' + $('.showHtmlMsg').html())
+	})
+	$('.showValBtn').click(function () {
+		alert('val：' + $('.showValMsg').val())
+	})
+	$('.showAttrBtn').click(function () {
+		alert('attr：' + $('.showAttrMsg').attr('href'))
+	})
+
+	// 设置内容和属性
+	$('.changeTextBtn').click(function () {
+		$('.changeTextMsg').text('<i> yahoo！！！ </i>')
+	})
+	$('.changeHtmlBtn').click(function () {
+		$('.changeHtmlMsg').html('<b> yahoo！！！ </b>')
+	})
+	$('.changeValBtn').click(function () {
+		$('.changeValMsg').val('yahoo！！！')
+	})
+	$('.changeAttrBtn').click(function () {
+		$('.changeAttrMsg').attr('href', 'http://www.google.com')
+	})
+
+	// 添加元素
+	$('.appendBtn').click(function () {
+		$('.addElementMsg').append('<b>！！！</b>')
+	})
+	$('.prependBtn').click(function () {
+		$('.addElementMsg').prepend('<i>！！！</i>')
+	})
+	$('.afterBtn').click(function () {
+		$('.addElementMsg').after('<b> yahoo！！！ </b>')
+	})
+	$('.beforeBtn').click(function () {
+		$('.addElementMsg').before('<i> yahoo！！！ </i>')
+	})
+
+	// 删除元素
+	$('.removeBtn').click(function () {
+		$('span').remove('.removeSpan')
+	})
+	$('.emptyBtn').click(function () {
+		$('.emptyMsg').empty()
+	})
+
+	// css样式
+	$('.cssBtn').click(function () {
+		$('.cssMsg').css({ 'color': 'red', 'font-size': '40px' })
+	})
+
+	// css类
+	$('.addClassBtn').click(function () {
+		$('.classMsg').addClass('colorGreen fontSize40')
+	})
+	$('.removeClassBtn').click(function () {
+		$('.classMsg').removeClass('colorGreen fontSize40')
+	})
+	$('.toggleClassBtn').click(function () {
+		$('.classMsg').toggleClass('colorGreen fontSize40')
+	})
+
+	// 尺寸
+	$('.sizeInfoBtn').click(function () {
+		const width = $('.sizeMsg').width()
+		const height = $('.sizeMsg').height()
+		const innerWidth = $('.sizeMsg').innerWidth()
+		const innerHeight = $('.sizeMsg').innerHeight()
+		const outerWidth = $('.sizeMsg').outerWidth()
+		const outerHeight = $('.sizeMsg').outerHeight()
+		const sizeInfo = `
+				width：${width}
+				height：${height}
+				innerWidth：${innerWidth}
+				innerHeight：${innerHeight}
+				outerWidth：${outerWidth}
+				outerHeight：${outerHeight}
+			`
+		alert(sizeInfo)
+	})
+	$('.changeSize').click(function () {
+		$('.sizeMsg').width('40%').height('40%')
+	})
+</script>
+
+</html>
