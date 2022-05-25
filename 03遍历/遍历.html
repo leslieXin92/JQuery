@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 遍历 </title>
+    <script src="../jQuery.js"></script>
+</head>
+<style>
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 600px;
+        margin: 50px 100px;
+    }
+
+    .boxButtons {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100px;
+        border-radius: 15px 15px 0 0;
+        background-color: rgba(29, 97, 214, 0.5);
+    }
+
+    button {
+        padding: 6px 15px;
+        margin: 5px 10px;
+        font-size: 17px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .boxMsg {
+        width: 600px;
+        background-color: aquamarine;
+    }
+
+    .boxMsg div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grandfather {
+        width: 600px;
+        height: 450px;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .father {
+        width: 450px;
+        height: 330px;
+        border-radius: 15px;
+        background-color: palevioletred;
+    }
+
+    .me {
+        position: relative;
+        width: 300px;
+        height: 225px;
+        border-radius: 15px;
+        background-color: palegreen;
+    }
+
+    span {
+        position: absolute;
+        left: 10px;
+        top: 0;
+        font-size: 24px;
+        color: purple;
+    }
+
+    .son {
+        width: 180px;
+        height: 135px;
+        border-radius: 15px;
+        background-color: thistle;
+    }
+
+    .grandson {
+        width: 75px;
+        height: 60px;
+        border-radius: 15px;
+        background-color: aqua;
+    }
+
+    .compatriotMsg div,
+    .filterMsg div {
+        width: 80%;
+        height: 45px;
+        margin: 20px auto;
+        border-radius: 15px;
+        color: purple;
+        background-color: skyblue;
+    }
+
+    .highlight {
+        background-color: black !important;
+    }
+</style>
+
+<body>
+    <!-- 祖先 & 后代 -->
+    <div class="box">
+        <div class="boxButtons">
+            <button class="parent"> parent </button>
+            <button class="parents"> parents </button>
+            <button class="parentsUntil"> parentsUntil </button>
+            <button class="children"> children </button>
+            <button class="find"> find </button>
+        </div>
+        <div class="boxMsg">
+            <div class="grandfather">
+                <div class="father">
+                    <div class="me">
+                        <span> me </span>
+                        <div class="son">
+                            <div class="grandson"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 同胞 -->
+    <div class="box">
+        <div class="boxButtons">
+            <button class="siblings"> siblings </button>
+            <button class="next"> next </button>
+            <button class="nextAll"> nextAll </button>
+            <button class="nextUntil"> nextUntil </button>
+            <button class="prev"> prev </button>
+            <button class="prevAll"> prevAll </button>
+            <button class="prevUntil"> prevUntil </button>
+        </div>
+        <div class="boxMsg compatriotMsg">
+            <div class="eldestBro"> eldestBro </div>
+            <div class="twoElderBro"> twoElderBro </div>
+            <div class="me compatriotMe"> me </div>
+            <div class="fourBro"> fourBro </div>
+            <div class="fiveBro"> fiveBro </div>
+        </div>
+    </div>
+
+    <!-- 过滤 -->
+    <div class="box">
+        <div class="boxButtons">
+            <button class="first"> first </button>
+            <button class="last"> last </button>
+            <button class="eq"> eq </button>
+            <button class="filter"> filter </button>
+            <button class="not"> not </button>
+        </div>
+        <div class="boxMsg filterMsg">
+            <div class="first oddNum"> first </div>
+            <div class="second"> second </div>
+            <div class="third oddNum"> third </div>
+            <div class="fourth"> fourth </div>
+            <div class="fifth oddNum"> fifth </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 祖先
+    $('.parent').click(function () {
+        $('.me').parent().toggleClass('highlight')
+    })
+    $('.parents').click(function () {
+        $('.me').parents('div').toggleClass('highlight')
+    })
+    $('.parentsUntil').click(function () {
+        $('.me').parentsUntil('.box').toggleClass('highlight')
+    })
+
+    // 后代
+    $('.children').click(function () {
+        $('.me').children().toggleClass('highlight')
+    })
+    $('.find').click(function () {
+        $('.me').find('div').toggleClass('highlight')
+    })
+
+    // 同胞
+    $('.siblings').click(function () {
+        $('.compatriotMe').siblings('div').toggleClass('highlight')
+    })
+    $('.next').click(function () {
+        $('.compatriotMe').next().toggleClass('highlight')
+    })
+    $('.nextAll').click(function () {
+        $('.compatriotMe').nextAll().toggleClass('highlight')
+    })
+    $('.nextUntil').click(function () {
+        $('.compatriotMe').nextUntil('.fiveBro').toggleClass('highlight')
+    })
+    $('.prev').click(function () {
+        $('.compatriotMe').prev().toggleClass('highlight')
+    })
+    $('.prevAll').click(function () {
+        $('.compatriotMe').prevAll().toggleClass('highlight')
+    })
+    $('.prevUntil').click(function () {
+        $('.compatriotMe').prevUntil('.eldestBro').toggleClass('highlight')
+    })
+
+    // 过滤
+    $('.first').click(function () {
+        $('.filterMsg div').first().toggleClass('highlight')
+    })
+    $('.last').click(function () {
+        $('.filterMsg div').last().toggleClass('highlight')
+    })
+    $('.eq').click(function () {
+        $('.filterMsg div').eq(3).toggleClass('highlight')
+    })
+    $('.filter').click(function () {
+        $('.filterMsg div').filter('.oddNum').toggleClass('highlight')
+    })
+    $('.not').click(function () {
+        $('.filterMsg div').not('.oddNum').toggleClass('highlight')
+    })
+</script>
+
+</html>
