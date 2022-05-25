@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ajax </title>
+    <script src="../jQuery.js"></script>
+</head>
+
+<style>
+    .box {
+        margin: 50px 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        cursor: pointer;
+        background-color: palegreen;
+    }
+
+    .boxButtons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+    }
+
+    button {
+        padding: 6px 15px;
+        font-size: 17px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .boxMsgs {
+        width: 100%;
+        font-size: 22px;
+        text-align: center;
+        cursor: default;
+        background-color: palevioletred;
+    }
+
+    .boxMsgs div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+    }
+
+    .getMsg {
+        border-bottom: 1px solid rebeccapurple;
+    }
+
+    .postMsg {
+        border-top: 1px solid rebeccapurple;
+    }
+</style>
+
+<body>
+    <!-- 加载 -->
+    <div class="box">
+        <div class="boxButtons">
+            <button class="load"> load </button>
+        </div>
+        <div class="boxMsgs">
+            <div class="loadMsg"> default </div>
+        </div>
+    </div>
+
+    <!-- 请求 -->
+    <div class="box">
+        <div class="boxButtons">
+            <button class="get"> get </button>
+            <button class="post"> post </button>
+        </div>
+        <div class="boxMsgs">
+            <div class="getMsg"> get massage </div>
+            <div class="postMsg"> post massage </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    // 加载
+    $('.load').click(function () {
+        $('.loadMsg').load('./Ajax.txt') //服务器端直接加载，客户端存在跨域问题
+    })
+
+    // 请求
+    const url = 'https://v2.alapi.cn/api/one'
+    const token = 'LwExDtUWhF3rH5ib'
+    $('.get').click(function () {
+        $.get(url + `?token=${token}`, function (res) {
+            $('.getMsg').text(res.msg)
+        })
+    })
+    $('.post').click(function () {
+        $.post(url, { token }, function (res) {
+            $('.postMsg').text(res.msg)
+        })
+    })
+</script>
+
+</html>
